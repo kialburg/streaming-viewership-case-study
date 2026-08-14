@@ -1,0 +1,7 @@
+tables:
+  - name: digital_sessions
+    columns:
+      - session_type
+  - name: viewer_sessions
+    columns:
+      - target_groups
