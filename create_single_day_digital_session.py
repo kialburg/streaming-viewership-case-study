@@ -15,7 +15,7 @@ conn.execute(f"DROP TABLE IF EXISTS digital_{table_date}_sessions")
 
 conn.execute(f"""
 CREATE TABLE digital_{table_date}_sessions AS
-SELECT 
+SELECT DISTINCT --there are duplicated records
 tv_day, channel_id, session_start, session_finish, 
 session_duration, session_id, target_group
 FROM digital_sessions
