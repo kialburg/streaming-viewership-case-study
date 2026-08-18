@@ -96,3 +96,7 @@ Check for over/under capacity assignments and improper activation/deactivation. 
 ### Viewer Integrity - Final Table
 
 Straightforward check that **output_active_sessions** doesn't have overlapping sessions.
+
+### Demographic Consistency
+
+Check that target_group buckets are consistent based on digital session_id.

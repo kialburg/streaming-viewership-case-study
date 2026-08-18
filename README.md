@@ -1,11 +1,47 @@
-# Execution Steps
+# Red Bull Case Study
 
-1. Setup the environment: SQLite Database and non time-dependent tables.
+## Overview
 
-`python \code\setup_env.py`
+This project analyzes viewer activation patterns and engagement metrics for the Red Bull case study. It processes digital session data, creates viewer mappings, and calculates key performance indicators across demographic segments.
 
-2. Write the daily staging tables
+## Getting Started
 
-`python \code\main.py 2025-09-04`
+### Prerequisites
 
-3. Run the Activation logic in the [Activation Plan Notebook](activation_plan.ipynb), with the relevant datestamp recorded in the `date` variable.
+- Python 3.x
+- SQLite3
+- Required Python packages (see `requirements.txt`)
+
+### Execution Steps
+
+1. **Set up the environment**
+   
+   Initialize the SQLite database and create non-time-dependent tables:
+   ```bash
+   python code/setup_env.py
+   ```
+
+2. **Generate daily staging tables**
+   
+   Process data for a specific date (replace `2025-09-04` with your target date):
+   ```bash
+   python code/main.py 2025-09-04
+   ```
+
+3. **Run the activation logic**
+   
+   Open and execute the [Activation Plan Notebook](code/activation_plan.ipynb), ensuring the `date` variable matches the date from step 2.
+
+## Project Structure
+
+- **`code/`** — Core Python scripts and notebooks
+- **`KPIs/`** — SQL queries for key performance indicators
+- **`EDA/`** — Exploratory data analysis notebooks and utilities
+- **`output/`** — Manually curated reports and exports
+- **`SQLite-db/`** — Database storage
+- **`bucket/`** — Data staging area
+
+## Documentation
+
+- [Data Model](Data%20Model.md) — Schema and data structure documentation
+- [Case Study Plan](Case%20Study%20Plan.md) — Stream of consciousness thoughts from the author trying to understand the task.
