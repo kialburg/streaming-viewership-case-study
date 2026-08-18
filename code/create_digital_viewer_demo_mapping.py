@@ -1,5 +1,5 @@
 import sqlite3
-from config import model_version
+from code.config import model_version
 
 db_path = "SQLite-db/sessions.db"
 conn = sqlite3.connect(db_path)
