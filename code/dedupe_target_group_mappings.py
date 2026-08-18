@@ -1,5 +1,5 @@
 import sqlite3
-from code.config import digital_sessions_target_groups
+from config import digital_sessions_target_groups
 
 db_path = "SQLite-db/sessions.db"
 conn = sqlite3.connect(db_path)

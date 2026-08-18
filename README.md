@@ -14,21 +14,26 @@ This project analyzes viewer activation patterns and engagement metrics for the 
 
 ### Execution Steps
 
-1. **Set up the environment**
+1. **Extract Data**
+
+Download the source data and load them into the repository in the `/bucket` folder.
+
+
+2. **Set up the environment**
    
    Initialize the SQLite database and create non-time-dependent tables:
    ```bash
    python code/setup_env.py
    ```
 
-2. **Generate daily staging tables**
+3. **Generate daily staging tables**
    
    Process data for a specific date (replace `2025-09-04` with your target date):
    ```bash
    python code/main.py 2025-09-04
    ```
 
-3. **Run the activation logic**
+4. **Run the activation logic**
    
    Open and execute the [Activation Plan Notebook](code/activation_plan.ipynb), ensuring the `date` variable matches the date from step 2.
 
