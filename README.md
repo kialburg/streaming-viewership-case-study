@@ -37,7 +37,7 @@ Download the source data and load them into the repository in the `/bucket` fold
    
     Process data for a specific date (replace `2025-09-04` with your target date):
    ```bash
-   python code/activatioon_plan.py 2025-09-04
+   python code/activation_plan.py 2025-09-04
    ```
 
 ## Project Structure
