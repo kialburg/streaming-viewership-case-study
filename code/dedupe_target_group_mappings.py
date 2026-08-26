@@ -1,8 +1,8 @@
-import sqlite3
+import duckdb
 from config import digital_sessions_target_groups
 
-db_path = "SQLite-db/sessions.db"
-conn = sqlite3.connect(db_path)
+db_path = "DuckDB/sessions.duckdb"
+conn = duckdb.connect(db_path)
 
 sql_filter = ', '.join(f"'{tg}'" for tg in digital_sessions_target_groups)
 

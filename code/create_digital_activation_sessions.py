@@ -1,4 +1,4 @@
-import sqlite3
+import duckdb
 import sys
 
 if len(sys.argv) < 2:
@@ -8,14 +8,13 @@ if len(sys.argv) < 2:
 date = sys.argv[1]
 table_date = date.replace("-","")
 
-db_path = "SQLite-db/sessions.db"
-conn = sqlite3.connect(db_path)
+db_path = "DuckDB/sessions.duckdb"
+conn = duckdb.connect(db_path)
 
 conn.execute(f"DROP TABLE IF EXISTS digital_{table_date}_activation_sessions")
 
 conn.execute(f"""
 CREATE TABLE digital_{table_date}_activation_sessions AS
--- SQLite
 WITH cte AS
 (SELECT 
 session_start AS ts, target_group, channel_id, 1 AS change, 'start' AS session_event, session_id

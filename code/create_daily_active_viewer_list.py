@@ -1,4 +1,4 @@
-import sqlite3
+import duckdb
 import sys
 from config import model_version
 
@@ -9,8 +9,8 @@ if len(sys.argv) < 2:
 date = sys.argv[1]
 table_date = date.replace("-","")
 
-db_path = "SQLite-db/sessions.db"
-conn = sqlite3.connect(db_path)
+db_path = "DuckDB/sessions.duckdb"
+conn = duckdb.connect(db_path)
 
 conn.execute(f"DROP TABLE IF EXISTS active_viewer_list_{table_date}")
 
