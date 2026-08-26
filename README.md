@@ -35,7 +35,10 @@ Download the source data and load them into the repository in the `/bucket` fold
 
 4. **Run the activation logic**
    
-   Open and execute the [Activation Plan Notebook](code/activation_plan.ipynb), ensuring the `date` variable matches the date from step 2.
+    Process data for a specific date (replace `2025-09-04` with your target date):
+   ```bash
+   python code/activatioon_plan.py 2025-09-04
+   ```
 
 ## Project Structure
 
