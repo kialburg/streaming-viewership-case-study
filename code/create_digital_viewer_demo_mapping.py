@@ -1,8 +1,8 @@
-import sqlite3
+import duckdb
 from config import model_version
 
-db_path = "SQLite-db/sessions.db"
-conn = sqlite3.connect(db_path)
+db_path = "DuckDB/sessions.duckdb"
+conn = duckdb.connect(db_path)
 
 conn.execute("DROP TABLE IF EXISTS digital_viewer_mapping")
 

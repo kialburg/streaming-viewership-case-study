@@ -15,7 +15,7 @@ def main() -> None:
     os.chdir(project_root)
 
     # Make sure the output DB folder exists
-    db_dir = project_root / "SQLite-db"
+    db_dir = project_root / "DuckDB"
     db_dir.mkdir(parents=True, exist_ok=True)
 
     initial_scripts = [

@@ -1,13 +1,13 @@
-import sqlite3
+import duckdb
 import glob
 import pandas as pd
 from decimal import Decimal
 
 def build_table(table_name, files):
 
-    # Create SQLite database
-    db_path = "SQLite-db/sessions.db"
-    conn = sqlite3.connect(db_path)
+    # Create DuckDB database
+    db_path = "DuckDB/sessions.duckdb"
+    conn = duckdb.connect(db_path)
 
     # Process files in batches of 8
     batch_size = 8
@@ -33,24 +33,26 @@ def build_table(table_name, files):
         print(f"  Columns: {df_batch.columns.tolist()}")
         print(f"  Memory usage: {df_batch.memory_usage(deep=True).sum() / 1024**2:.2f} MB")
         
-        # Write dataframe to SQLite table
+        # Write dataframe to DuckDB table
         is_first = (i == 0)
-        df_batch.to_sql(table_name, conn, if_exists="replace" if is_first else "append", index=False)
+        conn.register("df_batch", df_batch)
+        if is_first:
+            conn.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT * FROM df_batch")
+        else:
+            conn.execute(f"INSERT INTO {table_name} SELECT * FROM df_batch")
+        conn.unregister("df_batch")
 
     # Verify table creation
-    cursor = conn.cursor()
-    cursor.execute(f"SELECT COUNT(*) FROM {table_name}")
-    row_count = cursor.fetchone()[0]
-    print(f"\nSQLite table created: {db_path}")
+    row_count = conn.execute(f"SELECT COUNT(*) FROM {table_name}").fetchone()[0]
+    print(f"\nDuckDB table created: {db_path}")
     print(f"  Table name: {table_name}")
     print(f"  Total rows: {row_count:,}")
 
     # Show column info
-    cursor.execute(f"PRAGMA table_info({table_name})")
-    columns_info = cursor.fetchall()
+    columns_info = conn.execute(f"DESCRIBE {table_name}").fetchall()
     print(f"\nTable schema:")
     for col in columns_info:
-        print(f"  {col[1]} ({col[2]})")
+        print(f"  {col[0]} ({col[1]})")
 
     conn.close()
     print(f"\nDatabase connection closed. File ready at: {db_path}")

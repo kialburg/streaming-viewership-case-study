@@ -9,7 +9,7 @@ This project analyzes viewer activation patterns and engagement metrics for the 
 ### Prerequisites
 
 - Python 3.x
-- SQLite3
+- DuckDB
 - Required Python packages (see `requirements.txt`)
 
 ### Execution Steps
@@ -21,7 +21,7 @@ Download the source data and load them into the repository in the `/bucket` fold
 
 2. **Set up the environment**
    
-   Initialize the SQLite database and create non-time-dependent tables:
+   Initialize the DuckDB database and create non-time-dependent tables:
    ```bash
    python code/setup_env.py
    ```
@@ -43,7 +43,7 @@ Download the source data and load them into the repository in the `/bucket` fold
 - **`KPIs/`** — SQL queries for key performance indicators
 - **`EDA/`** — Exploratory data analysis notebooks and utilities
 - **`output/`** — Manually curated reports and exports
-- **`SQLite-db/`** — Database storage
+- **`DuckDB/`** — DuckDB database storage
 - **`bucket/`** — Data staging area
 
 ## Documentation
