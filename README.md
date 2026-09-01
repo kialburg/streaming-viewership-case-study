@@ -1,8 +1,8 @@
-# Red Bull Case Study
+# Streaming Viewership Case Study
 
 ## Overview
 
-This project analyzes viewer activation patterns and engagement metrics for the Red Bull case study. It processes digital session data, creates viewer mappings, and calculates key performance indicators across demographic segments.
+This project analyzes viewership patterns and engagement metrics for a pair of synthetic datasets for TV and mobile streaming viewership. It processes digital session data, creates viewer mappings, and calculates key performance indicators across demographic segments.
 
 ## Getting Started
 
